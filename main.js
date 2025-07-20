@@ -55,13 +55,26 @@ const bienvenida = prompt("Bienvenido a este simulador de juegos. \n ¿Qué le g
 switch(bienvenida){
     case "1":
         alert("Elegiste la opción 1. \n ¿Estás preparado para jugar? \n\n En este juego te daremos distintas pistas y tú tendrás que adivinar de qué o quién se trata. \n Estás preparado?")
-        let opcion = prompt("Elige una categoría: \n A-Lugares \n B-Deportes \n C-Musica"); jugarPorCategoria(opcion);
+        
+
+        let siguejugando = true;
+        while (siguejugando) {
+                let opcion = prompt("Elige una categoría: \n A-Lugares \n B-Deportes \n C-Musica"); jugarPorCategoria(opcion);
+
+        let unavezmas = prompt("¿Querés seguir jugando? Si o no")
+        if (unavezmas.toLowerCase () !== "si"){
+            siguejugando=false;
+            alert ("Gracias por jugar");
+        }
         break;
+    }
     case "2":
+        alert("veamos el otro juego")
+
 
         break;
     case "3":
-
+        alert("Querés agregar preguntas?")
         break;
 }
 
@@ -72,12 +85,17 @@ function jugarPorCategoria(opcion) {
         case "A":
             categoriaElegida = "Lugares";
             pistasLugares1();
+            pistasLugares2();
             break;
         case "B":
             categoriaElegida = "Deportes";
+            pistasDeportes1();
+            pistasDeportes2();
             break;
         case "C":
             categoriaElegida = "Musica";
+            pistasMusica1();
+            pistasMusica2();
             break;
         default:
             alert("No contamos con esa categoría... \n aún");
@@ -112,4 +130,153 @@ function pistasLugares1(){
 }}
 if  (!RespuestaCorrecta) {
     alert("Se acabaron las pistas, que mal... La respuesta era Tokyo");
+}
+function pistasLugares2(){
+    let preguntaCuba = "";
+    //Aca es para buscar la pregunta
+    for (let i=0; i<preguntasPistas.length;i++){
+        if(
+        preguntasPistas[i].categoria === "Lugares" && preguntasPistas[i].respuesta === "Cuba")
+        {preguntaCuba = preguntasPistas[i];
+        }
+    }
+    
+    //Juego con las pistas + Bandera
+
+    let RespuestaCorrecta = false;
+
+    for (let i=0; i<preguntaCuba.pistas.length;i++){
+        let intento = prompt(preguntaCuba.pistas[i] + "\n ¿En qué estás pensando?")
+
+    if (intento.toLowerCase() == "cuba"){
+        alert("¡Muy bien! Correcto. Vamos con mas pistas.")
+        break;
+    }else{
+        alert("OH NO!! Vamos con otra pista...")
+    }
+    
+}}
+if  (!RespuestaCorrecta) {
+    alert("Se acabaron las pistas, que mal... La respuesta era Cuba");
+}
+
+
+
+function pistasDeportes1(){
+    let preguntaWaterpolo = "";
+    //Aca es para buscar la pregunta
+    for (let i=0; i<preguntasPistas.length;i++){
+        if(
+        preguntasPistas[i].categoria === "Deportes" && preguntasPistas[i].respuesta === "Waterpolo")
+        {preguntaWaterpolo = preguntasPistas[i];
+        }
+    }
+    
+    //Juego con las pistas + Bandera
+
+    let RespuestaCorrecta = false;
+
+    for (let i=0; i<preguntaWaterpolo.pistas.length;i++){
+        let intento = prompt(preguntaWaterpolo.pistas[i] + "\n ¿En qué estás pensando?")
+
+    if (intento.toLowerCase() == "waterpolo"){
+        alert("¡Muy bien! Correcto. Vamos con mas pistas.")
+        break;
+    }else{
+        alert("OH NO!! Vamos con otra pista...")
+    }
+    
+}}
+if  (!RespuestaCorrecta) {
+    alert("Se acabaron las pistas, que mal... La respuesta era waterpolo");
+}
+
+function pistasDeportes2(){
+    let preguntaNovac = "";
+    //Aca es para buscar la pregunta
+    for (let i=0; i<preguntasPistas.length;i++){
+        if(
+        preguntasPistas[i].categoria === "Deportes" && preguntasPistas[i].respuesta === "Novac Djokovic")
+        {preguntaNovac = preguntasPistas[i];
+        }
+    }
+    
+    //Juego con las pistas + Bandera
+
+    let RespuestaCorrecta = false;
+
+    for (let i=0; i<preguntaNovac.pistas.length;i++){
+        let intento = prompt(preguntaNovac.pistas[i] + "\n ¿En qué estás pensando?")
+
+    if (intento.toLowerCase() == "novac djokovic"){
+        alert("¡Muy bien! Correcto. Vamos con mas pistas.")
+        break;
+    }else{
+        alert("OH NO!! Vamos con otra pista...")
+    }
+    
+}}
+if  (!RespuestaCorrecta) {
+    alert("Se acabaron las pistas, que mal... La respuesta era Novac Djokovic");
+}
+
+
+
+function pistasMusica1(){
+    let preguntaLuisM = "";
+    //Aca es para buscar la pregunta
+    for (let i=0; i<preguntasPistas.length;i++){
+        if(
+        preguntasPistas[i].categoria === "Musica" && preguntasPistas[i].respuesta === "Luis Miguel")
+        {preguntaLuisM = preguntasPistas[i];
+        }
+    }
+    
+    //Juego con las pistas + Bandera
+
+    let RespuestaCorrecta = false;
+
+    for (let i=0; i<preguntaLuisM.pistas.length;i++){
+        let intento = prompt(preguntaLuisM.pistas[i] + "\n ¿En qué estás pensando?")
+
+    if (intento.toLowerCase() == "luis miguel"){
+        alert("¡Muy bien! Correcto. Vamos con mas pistas.")
+        break;
+    }else{
+        alert("OH NO!! Vamos con otra pista...")
+    }
+    
+}}
+if  (!RespuestaCorrecta) {
+    alert("Se acabaron las pistas, que mal... La respuesta era Luis Miguel");
+}
+
+function pistasMusica2 (){
+    let preguntaReggae = "";
+    //Aca es para buscar la pregunta
+    for (let i=0; i<preguntasPistas.length;i++){
+        if(
+        preguntasPistas[i].categoria === "Musica" && preguntasPistas[i].respuesta === "Reggae")
+        {preguntaReggae = preguntasPistas[i];
+        }
+    }
+    
+    //Juego con las pistas + Bandera
+
+    let RespuestaCorrecta = false;
+
+    for (let i=0; i<preguntaReggae.pistas.length;i++){
+        let intento = prompt(preguntaReggae.pistas[i] + "\n ¿En qué estás pensando?")
+
+    if (intento.toLowerCase() == "reggae"){
+        alert("¡Muy bien! Correcto. Vamos con mas pistas.")
+        break;
+    }else{
+        alert("OH NO!! Vamos con otra pista...")
+    }
+    
+}}
+
+if  (!RespuestaCorrecta) {
+    alert("Se acabaron las pistas, que mal... La respuesta era reggae");
 }
