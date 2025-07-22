@@ -48,34 +48,66 @@ const preguntasPistas = [
     }
 ]
 
+const preguntasYRespuestas =[
+    {pregunta: "¿Cuál es el elemento químico con el símbolo 'Au'?",respuesta: "Oro"},
+    {pregunta: "¿Qué país tiene la mayor cantidad de hablantes nativos de español en el mundo?", respuesta: "México"},
+    {pregunta: "¿En qué año cayó el Muro de Berlín?",respuesta: "1989"},
+    {pregunta: "¿Cuál es el río más largo del mundo?",respuesta: "Amazonas"},
+    {pregunta: "¿Quién escribió *Cien años de soledad*?",respuesta: "Gabriel García Márquez"},
+    {pregunta: "¿Cuál es el número primo más pequeño mayor que 100?", respuesta: "101"},
+    {pregunta: "¿Qué científico desarrolló la teoría general de la relatividad?", respuesta: "Albert Einstein"},
+    {pregunta: "¿En qué continente se encuentra el desierto del Sahara?", respuesta: "África"},
+    {pregunta: "¿Qué país fue sede de los Juegos Olímpicos en 2008?",respuesta: "China"},
+    {pregunta: "¿Cuál es la capital de Nueva Zelanda?",respuesta: "Wellington"},
+]
 
 
-const bienvenida = prompt("Bienvenido a este simulador de juegos. \n ¿Qué le gustaría hacer? \n\n 1- Jugar Pistas \n 2- Jugar Preguntas y respuestas \n 3 - Agregar preguntas")
+let juego = true
 
-switch(bienvenida){
-    case "1":
-        alert("Elegiste la opción 1. \n ¿Estás preparado para jugar? \n\n En este juego te daremos distintas pistas y tú tendrás que adivinar de qué o quién se trata. \n Estás preparado?")
+while(juego){
+    let bienvenida = prompt("Bienvenido a este simulador de juegos. \n ¿Qué le gustaría hacer? \n\n 1- Jugar Pistas \n 2- Jugar Preguntas y respuestas \n 3 - Agregar preguntas")
+
+
+    switch(bienvenida){
+        case "1":
+            alert("Elegiste la opción 1. \n ¿Estás preparado para jugar? \n\n En este juego te daremos distintas pistas y tú tendrás que adivinar de qué o quién se trata. \n Estás preparado?")
+            
+
+            let siguejugando = true;
+            while (siguejugando) {
+                    let opcion = prompt("Elige una categoría: \n A-Lugares \n B-Deportes \n C-Musica"); jugarPorCategoria();
+
+                    let unavezmas = prompt("¿Querés seguir jugando? Si o no")
+                    if (unavezmas.toLowerCase () !== "si"){
+                        siguejugando=false;
+                    alert ("Gracias por jugar");
+                    }
+                }
+            break;
         
-
-        let siguejugando = true;
-        while (siguejugando) {
-                let opcion = prompt("Elige una categoría: \n A-Lugares \n B-Deportes \n C-Musica"); jugarPorCategoria(opcion);
-
-        let unavezmas = prompt("¿Querés seguir jugando? Si o no")
-        if (unavezmas.toLowerCase () !== "si"){
-            siguejugando=false;
-            alert ("Gracias por jugar");
-        }
+        case "2":
+            alert("Veamos el otro juego \n En este juego tendrás que responder preguntas de cultura general");
+            let ready = prompt("¿Estás preparado?")
+                if (ready.toLowerCase () === "si"){
+                    JuegoPreguntasYRespuestas ();
+                }else{(unavezmas.toLowerCase () !== "si");
+                    {siguejugando=false;
+                    alert ("Gracias por jugar");
+                    }
+                }
+            break;
+        case "3":
+            alert("Agregarás preguntas al segundo juego") ; agregarPregunta() 
+            
         break;
+        
+        default:
+            alert("No es una opción valida");
     }
-    case "2":
-        alert("veamos el otro juego")
-
-
-        break;
-    case "3":
-        alert("Querés agregar preguntas?")
-        break;
+    let volveralmenu = prompt("¿Querés ver las opciones nuevamente? si/no")
+    if (volveralmenu.toLowerCase() !== "si") {
+        juego = false
+    }
 }
 
 function jugarPorCategoria(opcion) {
@@ -279,4 +311,28 @@ function pistasMusica2 (){
 
 if  (!RespuestaCorrecta) {
     alert("Se acabaron las pistas, que mal... La respuesta era reggae");
+}
+
+function JuegoPreguntasYRespuestas () {
+    for (let i=0; i<preguntasYRespuestas.length; i++){
+        let respuestaJugador = prompt(preguntasYRespuestas[i].pregunta);
+    if (respuestaJugador.toLowerCase () === preguntasYRespuestas[i].respuesta.toLowerCase()){
+        alert("Muy bien! Siguiente")
+    }else{
+        alert("Incorrecto. La respuesta era " + preguntasYRespuestas[i].respuesta)
+        }
+    }
+}
+
+function agregarPregunta () {
+    let preguntaAgregada = prompt("¿Cuál es la pregunta?");
+    let respuestaAgregada = prompt("¿Cuál es la respuesta?");
+
+    const cositasAgregadas = {
+        pregunta : preguntaAgregada,
+        respuesta : respuestaAgregada,
+    }
+    preguntasYRespuestas.push(cositasAgregadas)
+
+    console.log(preguntasYRespuestas)
 }
